@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# ChromaDB
+movie/chroma_movie_db/
+*.sqlite3
+*.bin
+*.pickle
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
