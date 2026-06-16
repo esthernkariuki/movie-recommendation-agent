@@ -22,3 +22,7 @@ movie/chroma_movie_db/
 
 # Logs
 *.log
+
+__pycache__/
+*.pyc
+movie/movie_agent/__pycache__/
