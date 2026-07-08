@@ -1,7 +1,0 @@
-streamlit
-pandas
-spacy
-sentence-transformers
-chromadb
-dotenv
-google-generativeai
