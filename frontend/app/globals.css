@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020617;
+  --color-card: #111827;
+  --color-border: #334155;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-text: #ffffff;
+  --color-text-secondary: #94a3b8;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient glow + faint dot grid, sits behind all content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 620px at 50% 8%, rgba(37, 99, 235, 0.16), transparent 70%),
+    radial-gradient(circle 480px at 10% 85%, rgba(37, 99, 235, 0.08), transparent 70%),
+    radial-gradient(circle 480px at 90% 75%, rgba(37, 99, 235, 0.08), transparent 70%),
+    radial-gradient(circle 1px, rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    28px 28px;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+/* Film-strip sprocket rails along the outer edges */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, var(--color-border) 2.5px, transparent 3px),
+    radial-gradient(circle, var(--color-border) 2.5px, transparent 3px);
+  background-size: 18px 44px, 18px 44px;
+  background-position: 10px 22px, calc(100% - 10px) 22px;
+  background-repeat: repeat-y, repeat-y;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, transparent, black 8%, black 92%, transparent);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Simple scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #475569;
+}
