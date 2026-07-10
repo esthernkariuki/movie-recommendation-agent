@@ -1,18 +1,77 @@
 # 🎬 CineMind AI
 
-An AI-powered movie recommendation system that understands natural language and recommends movies using semantic search, vector embeddings, ChromaDB, and Google's Gemini AI.
+An AI-powered movie recommendation system that understands natural language and recommends movies using **semantic search**, **Sentence Transformers**, **ChromaDB**, and **Google Gemini AI**.
+
+Instead of relying on keyword matching, CineMind AI understands the meaning behind a user's request and explains why each movie was recommended.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Search movies using natural language
-- 🤖 AI-generated explanations for every recommendation
-- 🧠 Semantic search using Sentence Transformers
-- 💾 Vector database powered by ChromaDB
-- ⚡ FastAPI backend
-- 🎨 Modern Next.js frontend
-- 📱 Responsive user interface
+* 🔍 Semantic movie search using Sentence Transformers
+* 🎥 Natural language movie recommendations
+* 🧠 AI-generated explanations using Gemini AI
+* ⚡ Fast vector similarity search with ChromaDB
+* 🎨 Modern Next.js frontend
+* 🚀 FastAPI backend
+* 📱 Responsive user interface
+
+---
+
+## 🏗️ Architecture
+
+```text
+                User Query
+                     │
+                     ▼
+            Sentence Transformer
+                     │
+                     ▼
+             Query Embedding
+                     │
+                     ▼
+                ChromaDB Search
+                     │
+                     ▼
+         Top Similar Movie Results
+                     │
+                     ▼
+             Google Gemini AI
+                     │
+                     ▼
+      Personalized Recommendation Explanation
+                     │
+                     ▼
+                Next.js Frontend
+```
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Axios
+* Framer Motion
+
+### Backend
+
+* FastAPI
+* Python
+* ChromaDB
+* Sentence Transformers
+* Google Gemini API
+* Pandas
+
+### AI & Machine Learning
+
+* all-MiniLM-L6-v2
+* Semantic Search
+* Vector Embeddings
+* Generative AI
 
 ---
 
@@ -20,139 +79,105 @@ An AI-powered movie recommendation system that understands natural language and 
 
 ### Home Page
 
-> Add a screenshot here
-
 ![Home](screenshots/home.png)
 
 ### Recommendations
 
-> Add a screenshot here
-
-![Recommendations](screenshots/recommendations.png)
-
-### FastAPI Documentation
-
-![Swagger](screenshots/swagger.png)
+![Recommendations](screenshots/results.png)
 
 ---
 
-# 🏗 Architecture
+## 📂 Project Structure
 
-```
-                 Next.js Frontend
-                        │
-                        ▼
-                 FastAPI Backend
-                        │
-        ┌───────────────┴───────────────┐
-        ▼                               ▼
- Sentence Transformers             Gemini AI
-        │
-        ▼
-     ChromaDB
-        │
-        ▼
- Movie Dataset
-```
-
----
-
-# 🚀 Tech Stack
-
-### Frontend
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- Axios
-
-### Backend
-
-- FastAPI
-- Python
-- Sentence Transformers
-- ChromaDB
-- Google Gemini API
-
-### AI
-
-- Semantic Search
-- Vector Embeddings
-- Retrieval-Augmented Recommendation
-
----
-
-# 📂 Project Structure
-
-```
-movie-recommendation-agent/
-
-├── backend/
+```text
+movie-recommendation-agent
+│
+├── backend
 │   ├── app.py
 │   ├── recommendation.py
+│   ├── load_movies.py
 │   ├── database.py
 │   ├── embeddings.py
 │   ├── gemini_service.py
-│   └── requirements.txt
 │
-├── frontend/
-│   ├── app/
-│   ├── components/
-│   ├── services/
-│   └── types/
+├── frontend
+│   ├── app
+│   ├── components
+│   ├── services
+│   └── types
 │
-├── notebook/
-│   └── movie_recommendation_agent.ipynb
+├── screenshots
 │
-├── screenshots/
+├── data
 │
 └── README.md
 ```
 
 ---
 
-# ⚙ Installation
+## 🚀 Installation
 
-## Clone Repository
+### Clone the repository
 
 ```bash
-git clone git@github.com:esthernkariuki/movie-recommendation-agent.git
+git clone https://github.com/yourusername/movie-recommendation-agent.git
 
 cd movie-recommendation-agent
 ```
 
 ---
 
-## Backend
+### Backend
 
 ```bash
 cd backend
 
-python3 -m venv venv
+python -m venv venv
 
 source venv/bin/activate
 
 pip install -r requirements.txt
-
-uvicorn app:app --reload
 ```
 
-Backend runs at
+Create a `.env` file.
 
-```
-http://127.0.0.1:8000
-```
-
-Swagger Docs
-
-```
-http://127.0.0.1:8000/docs
+```env
+GEMINI_API_KEY=your_api_key_here
 ```
 
 ---
 
-## Frontend
+### Download the Dataset
+
+Download the TMDB 5000 Movie Dataset from Kaggle.
+
+Place these files inside the `data/` folder:
+
+```
+tmdb_5000_movies.csv
+
+tmdb_5000_credits.csv
+```
+
+---
+
+### Load Movies into ChromaDB
+
+```bash
+python load_movies.py
+```
+
+---
+
+### Run the Backend
+
+```bash
+uvicorn app:app --reload
+```
+
+---
+
+### Frontend
 
 ```bash
 cd frontend
@@ -162,7 +187,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs at
+Visit:
 
 ```
 http://localhost:3000
@@ -170,44 +195,54 @@ http://localhost:3000
 
 ---
 
-# 💡 Example Prompt
+## API
 
+### POST `/recommend`
+
+Example Request
+
+```json
+{
+  "query": "Romantic movie"
+}
 ```
-I want an emotional science fiction movie with space travel.
+
+Example Response
+
+```json
+{
+  "query": "Romantic movie",
+  "recommendations": [...],
+  "explanation": "..."
+}
 ```
 
 ---
 
-# 🧠 How It Works
+## Future Improvements
 
-1. User enters a movie description.
-2. FastAPI receives the request.
-3. Sentence Transformers create embeddings.
-4. ChromaDB performs semantic similarity search.
-5. Gemini AI explains why the recommended movies match the user's request.
-6. The frontend displays recommendations and AI explanations.
-
----
-
-# 🔮 Future Improvements
-
-- Movie posters
-- User authentication
-- Favorites and watchlist
-- Genre filters
-- Streaming platform integration
-- Recommendation history
-- Dark/Light mode
+* Movie poster support
+* Genre filtering
+* Year filtering
+* Actor filtering
+* Streaming platform recommendations
+* User authentication
+* Favorites and watchlists
+* Hybrid recommendation engine
+* LLM-powered conversational assistant
 
 ---
 
-# 👩‍💻 Author
+## Author
 
 **Esther Nyambura Kariuki**
 
-- GitHub: https://github.com/esthernkariuki
-- LinkedIn: https://www.linkedin.com/in/esther-nyambura-kariuki/
+Entry-Level Software & Data Engineer
+
+GitHub:
+https://github.com/esthernkariuki
+
+LinkedIn:
+https://www.linkedin.com/in/esther-nyambura-kariuki/
 
 ---
-
-⭐ If you found this project interesting, feel free to star the repository.
