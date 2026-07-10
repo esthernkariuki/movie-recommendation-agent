@@ -37,9 +37,9 @@ def recommend_movies(user_query: str, top_k: int = 5):
 
     # Step 2: Search ChromaDB for similar movies
     results = collection.query(
-        query_embeddings=[query_embedding],
-        n_results=top_k
-    )
+    query_embeddings=[query_embedding],
+    n_results=5)
+    print(results)
 
     # Step 3: Extract movie metadata
     movies = results["metadatas"][0]

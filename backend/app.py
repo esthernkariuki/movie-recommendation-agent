@@ -47,10 +47,10 @@ def home():
 
 @app.post("/recommend")
 def recommend(request: MovieRequest):
-    """
-    Generate movie recommendations based on a user's query.
-    """
-
     result = recommend_movies(request.query)
+
+    print("\n========== RESPONSE ==========")
+    print(result)
+    print("==============================\n")
 
     return result

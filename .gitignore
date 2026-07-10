@@ -26,3 +26,12 @@ movie/chroma_movie_db/
 __pycache__/
 *.pyc
 movie/movie_agent/__pycache__/
+
+# Dataset
+data/
+
+# ChromaDB
+chroma_db/
+
+# Zip files
+*.zip

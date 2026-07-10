@@ -33,6 +33,15 @@ Explain why each movie is a good recommendation.
 Keep your answer concise and conversational.
 """
 
-    response = model.generate_content(prompt)
+    try:
+        response = model.generate_content(prompt)
 
-    return response.text
+        return response.text
+
+    except Exception as e:
+        print("Gemini error:", e)
+
+        return (
+            "These movies were recommended because they have similar "
+            "themes, atmosphere, and concepts to your request."
+        )
