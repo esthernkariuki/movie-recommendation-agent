@@ -74,17 +74,21 @@ Instead of relying on keyword matching, CineMind AI understands the meaning behi
 * Generative AI
 
 ---
-
 ## 📸 Screenshots
 
-### Home Page
+### 🏠 Home Page
 
-![Home](screenshots/home.png)
+The landing page allows users to enter natural language movie requests and receive AI-powered recommendations.
 
-### Recommendations
+![Home Page](screenshots/home.png)
 
-![Recommendations](screenshots/results.png)
+---
 
+### 📡 FastAPI Swagger API
+
+Interactive API documentation for testing recommendation requests and viewing JSON responses.
+
+![Swagger UI](screenshots/swagger.png)
 ---
 
 ## 📂 Project Structure
